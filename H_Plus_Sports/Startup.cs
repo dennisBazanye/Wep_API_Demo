@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using H_Plus_Sports.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -24,6 +26,9 @@ namespace H_Plus_Sports
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            var connection = "Server=tcp:apisrv.database.windows.net,1433;Initial Catalog=H_Plus_Sports;Persist Security Info=False;User ID=dennis;Password=Jterry26;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<H_Plus_SportsContext>(options => options.UseSqlServer(connection));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

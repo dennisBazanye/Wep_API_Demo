@@ -12,13 +12,11 @@ namespace H_Plus_Sports.Models
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<Salesperson> Salesperson { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //add constructor to class and inject DbContext
+        public H_Plus_SportsContext(DbContextOptions<H_Plus_SportsContext> options)
+            : base(options)
         {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=tcp:apisrv.database.windows.net,1433;Initial Catalog=H_Plus_Sports;Persist Security Info=False;User ID=dennis;Password=Jterry26;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-            }
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
