@@ -11,6 +11,7 @@ namespace HPlusSportsAPI.Controllers
     [Route("api/Products")]
     public class ProductsController : Controller
     {
+        //inject the DB context through the constructor of the controller
         public ProductsController()
         {
 
